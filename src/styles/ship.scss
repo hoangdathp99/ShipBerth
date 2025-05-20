@@ -1,0 +1,126 @@
+.ship {
+  /* height: 50px; */
+  /* background-color: #555; */
+  position: relative;
+  border-radius: 50% / 30%;
+}
+
+.fish-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
+
+@keyframes move-x {
+  0% {
+    transform: translateX(0);
+  }
+
+  100% {
+    transform: translateX(100vw);
+  }
+}
+
+@keyframes wave-y {
+  0% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-20px);
+  }
+
+  100% {
+    transform: translateY(0);
+  }
+}
+
+@keyframes wave {
+  0% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(-5px);
+  }
+
+  100% {
+    transform: translateY(0);
+  }
+}
+
+.popup {
+  position: absolute;
+  background-color: rgba(0, 0, 0, 0.8);
+  color: white;
+  padding: 5px 10px;
+  border-radius: 5px;
+  font-size: 14px;
+  display: none;
+  top: -70px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: max-content;
+}
+
+.delete-btn {
+  position: absolute;
+  display: none;
+  top: 0px;
+  right: 0;
+}
+
+.startPoint {
+  position: absolute;
+  height: 120px;
+  width: 0px;
+  border-left: 2px dashed #FFD700;
+  display: none;
+  bottom: -90px;
+
+  label {
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    color: #FFD700
+  }
+}
+
+.ship:hover {
+  .popup {
+    display: block;
+  }
+
+  .delete-btn {
+    display: block;
+  }
+}
+
+.ship:hover .startPoint {
+
+  display: block;
+}
+
+.ship-position-container {
+  position: absolute;
+
+  &.overlay {
+    left: 0;
+    bottom: 0;
+  }
+
+  &.not-overlay {
+    left: 20px;
+    bottom: 210px;
+  }
+}
+
+.dragging {
+  opacity: 0.2;
+}
+
+.not-dragging {
+  opacity: 1;
+}

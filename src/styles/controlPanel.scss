@@ -1,0 +1,18 @@
+.control-panel {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    padding: 16px;
+    width: 400px;
+    background: white;
+    box-shadow: 0 0 10px rgba(0,0,0,0.2);
+    border-radius: 8px;
+}
+.select-ship-container {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    .select-ship{
+        width: 100%;
+    }
+}
