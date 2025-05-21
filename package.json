@@ -8,10 +8,10 @@
     "build": "next build",
     "build:socket": "next build && tsc --project tsconfig.server.json",
     "start": "next start",
-    "start:socket": "cross-env NODE_ENV=production pm2 start dist/server.js --name ship-birth-server && pm2 logs ship-birth-server",
-    "stop:socket": "pm2 stop ship-birth-server",
-    "restart:socket": "pm2 restart ship-birth-server",
-    "delete:socket": "pm2 delete ship-birth-server",
+    "start:socket": "cross-env NODE_ENV=production pm2 start dist/server.js --name ship-berth-server && pm2 logs ship-berth-server",
+    "stop:socket": "pm2 stop ship-berth-server",
+    "restart:socket": "pm2 restart ship-berth-server",
+    "delete:socket": "pm2 delete ship-berth-server",
     "lint": "next lint"
   },
   "dependencies": {
