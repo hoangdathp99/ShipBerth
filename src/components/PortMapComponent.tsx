@@ -35,7 +35,7 @@ const PortMapComponent: React.FC<PortMapComponentProps> = () => {
             title={openControl ? "Đóng bảng điều khiển" : "Mở bảng điều khiển"}
             placement="right"
           >
-            <Button onClick={handleOpenControl} style={{ gap: 0 }}>
+            <Button onClick={handleOpenControl} style={{ gap: 0, boxShadow: "0 0 10px rgba(0,0,0,0.2)" }}>
               {!openControl ? <LeftOutlined /> : <RightOutlined />}
             </Button>
           </Tooltip>

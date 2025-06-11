@@ -6,13 +6,40 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
+h1,h2,h3,h4,h5,h6{
+  margin: 5px 0;
+  padding: 0;
+}
 .header {
   display: flex;
-  background: #001529;
-  color: white;
+  flex-direction: column;
+  
   justify-content: center;
   align-items: center;
-  height: 50px;
+  /* height: 50px; */
   width: 100vw;
   position: fixed;
 }
+.banner {
+  background: #001529;
+  color: white;
+  height: 50px;
+  width: 100%;
+  text-align: center;
+  display: flex;  
+  justify-content: center;
+  align-items: center;
+}
+.logo-banner {
+  background: white;
+  color: #0000ff;
+  padding: 16px;
+  /* height: 50px; */
+  width: 100%;
+  text-align: center;
+  display: flex;  
+  justify-content: center;
+  align-items: center;
+  gap: 24px;
+}
+

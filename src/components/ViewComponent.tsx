@@ -66,7 +66,7 @@ const ViewComponent = () => {
                     color: "#FFFFFF",
                   }}
                 >
-                  Tân Cảng Port
+                  PTSC Port
                 </div>
               </div>
             ) : meterValue === 425 && start != 0 ? (
@@ -207,7 +207,7 @@ const ViewComponent = () => {
                 className="fish-x"
                 style={{
                   position: "absolute",
-                  bottom: `calc(${Math.random() * 80+10}% - 20px)`,
+                  bottom: `calc(${Math.random() * 80+10}% - 50px)`,
                   left: `-20px`,
                   animation: `move-x ${Math.random() * 10 + 20}s linear ${
                     i * 3

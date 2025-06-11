@@ -76,7 +76,7 @@ const RulerComponent = () => {
                     color:'#FFFFFF'
                   }}
                 >
-                  Tân Cảng Port
+                  PTSC Port
                 </div>
               </div>
             ) : meterValue === 425 && start != 0 ? (
