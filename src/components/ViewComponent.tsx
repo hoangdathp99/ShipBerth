@@ -4,6 +4,7 @@ import { socket } from "@/lib/socketClient";
 import { useEffect, useRef, useState } from "react";
 import ShipPositionComponent from "./ShipPositionComponent";
 import "../styles/ship.scss";
+import { ArrowDownOutlined, ArrowLeftOutlined, LeftOutlined, RightOutlined } from "@ant-design/icons";
 const ViewComponent = () => {
   const [rulerLengthMeters, setRulerLengthMeters] = useState(625);
   const [start, setStart] = useState(-100);
@@ -43,7 +44,7 @@ const ViewComponent = () => {
             style={{
               position: "absolute",
               left: leftPosition,
-              bottom: "160px",
+              bottom: "calc(10vh - 18px)",
               transform: "translateX(-50%)",
               textAlign: "center",
             }}
@@ -52,7 +53,7 @@ const ViewComponent = () => {
               <div
                 style={{
                   width: "2px",
-                  height: "500px",
+                  height: "30vh",
                   backgroundColor: "#CCCCCC",
                   margin: "0 auto",
                 }}
@@ -60,20 +61,45 @@ const ViewComponent = () => {
                 <div
                   style={{
                     position: "absolute",
-                    bottom: "520px",
+                     bottom: "calc(30vh + 20px)",
                     width: "max-content",
-                    transform: "translateX(-100%)",
+                    // transform: "translateX(-100%)",
                     color: "#FFFFFF",
                   }}
                 >
-                  PTSC Port
+                  <div style={{ transform: "translateX(-100%)" }}>
+                    PTSC Port
+                  </div>
+                  <div
+                    style={{
+                      position: "absolute",
+                      width: "200px",
+                      top: "15px",
+                      transform: "translateX(-100%)",
+                      // left: "-130px",
+                    }}
+                  >
+                    <div style={{ position: "relative" }}>
+                      <hr />
+                      <div
+                        style={{
+                          position: "absolute",
+                          top: "50%",
+                          left: "-10px",
+                          transform: "translateY(-50%)",
+                        }}
+                      >
+                        <LeftOutlined />
+                      </div>
+                    </div>
+                  </div>
                 </div>
               </div>
             ) : meterValue === 425 && start != 0 ? (
               <div
                 style={{
                   width: "2px",
-                  height: "500px",
+                  height: "30vh",
                   backgroundColor: "#CCCCCC",
                   margin: "0 auto",
                 }}
@@ -81,12 +107,33 @@ const ViewComponent = () => {
                 <div
                   style={{
                     position: "absolute",
-                    bottom: "520px",
+                    bottom: "calc(30vh + 20px)",
                     width: "max-content",
                     color: "#FFFFFF",
                   }}
                 >
                   Tân Vũ Port
+                  <div
+                    style={{
+                      position: "absolute",
+                      width: "200px",
+                      top: "15px",
+                    }}
+                  >
+                    <div style={{ position: "relative" }}>
+                      <hr />
+                      <div
+                        style={{
+                          position: "absolute",
+                          top: "50%",
+                          right: "-10px",
+                          transform: "translateY(-50%)",
+                        }}
+                      >
+                        <RightOutlined />
+                      </div>
+                    </div>
+                  </div>
                 </div>
               </div>
             ) : (
@@ -116,7 +163,7 @@ const ViewComponent = () => {
             style={{
               position: "absolute",
               left: leftPosition,
-              bottom: "178px",
+              bottom: "10vh",
               transform: "translateX(-50%)",
               textAlign: "center",
             }}
@@ -146,7 +193,7 @@ const ViewComponent = () => {
         setScale(newScale);
       }
     };
-
+    
     updateScale();
     window.addEventListener("resize", updateScale);
     return () => window.removeEventListener("resize", updateScale);
@@ -207,7 +254,7 @@ const ViewComponent = () => {
                 className="fish-x"
                 style={{
                   position: "absolute",
-                  bottom: `calc(${Math.random() * 80+10}% - 50px)`,
+                  bottom: `calc(${Math.random() * 80 + 10}% - 50px)`,
                   left: `-20px`,
                   animation: `move-x ${Math.random() * 10 + 20}s linear ${
                     i * 3
@@ -221,7 +268,7 @@ const ViewComponent = () => {
                   }}
                 >
                   <img
-                    src={`/images/fish${i%2?1:2}.gif`}
+                    src={`/images/fish${i % 2 ? 1 : 2}.gif`}
                     alt="fish"
                     className="fish"
                     style={{
@@ -237,7 +284,7 @@ const ViewComponent = () => {
       <div
         style={{
           position: "absolute",
-          bottom: "178px",
+          bottom: "10vh",
           left: margin,
           width: effectiveRulerWidthPixels,
           height: "2px",

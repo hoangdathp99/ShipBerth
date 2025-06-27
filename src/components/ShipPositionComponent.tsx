@@ -39,9 +39,7 @@ const ShipPositionComponent: React.FC<ShipPositionComponentProps> = ({
   const shipWidth = useMemo(() => ship.length * scale, [ship.length, scale]);
   const { attributes, listeners, setNodeRef, isDragging } = useDraggable({
     id,
-  });
-  console.log(ship);
-  
+  });  
   return (
     <div
       className={`ship-position-container ${
@@ -74,7 +72,9 @@ const ShipPositionComponent: React.FC<ShipPositionComponentProps> = ({
           }}
           alt="Ship"
         />
-
+        <div className="endPoint" style={viewMode ? { display: "block" } : {}}>
+          <label>{overlay ? "" : `${Math.round(ship.position.x)+ship.length}m`}</label>
+        </div>
         <div className="popup" style={viewMode ? { display: "block" } : {}}>
           <div>
 

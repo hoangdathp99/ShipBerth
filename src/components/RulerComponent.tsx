@@ -13,6 +13,7 @@ import { createSnapModifier } from "@dnd-kit/modifiers";
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import ShipPositionComponent from "./ShipPositionComponent";
 import { socket } from "@/lib/socketClient";
+import { LeftOutlined, RightOutlined } from "@ant-design/icons";
 
 const RulerComponent = () => {
   const [rulerLengthMeters, setRulerLengthMeters] = useState(625);
@@ -52,7 +53,7 @@ const RulerComponent = () => {
             style={{
               position: "absolute",
               left: leftPosition,
-              bottom: "160px",
+              bottom: "calc(10vh - 18px)",
               transform: "translateX(-50%)",
               textAlign: "center",
               // zIndex:50
@@ -62,7 +63,7 @@ const RulerComponent = () => {
               <div
                 style={{
                   width: "2px",
-                  height: "500px",
+                  height: "30vh",
                   backgroundColor: "#CCCCCC",
                   margin: "0 auto",
                 }}
@@ -70,20 +71,45 @@ const RulerComponent = () => {
                 <div
                   style={{
                     position: "absolute",
-                    bottom: "520px",
+                    bottom: "calc(30vh + 20px)",
                     width: "max-content",
-                    transform: "translateX(-100%)",
-                    color:'#FFFFFF'
+                    // transform: "translateX(-100%)",
+                    color: "#FFFFFF",
                   }}
                 >
-                  PTSC Port
+                  <div style={{ transform: "translateX(-100%)" }}>
+                    PTSC Port
+                  </div>
+                  <div
+                    style={{
+                      position: "absolute",
+                      width: "200px",
+                      top: "15px",
+                      transform: "translateX(-100%)",
+                      // left: "-130px",
+                    }}
+                  >
+                    <div style={{ position: "relative" }}>
+                      <hr />
+                      <div
+                        style={{
+                          position: "absolute",
+                          top: "50%",
+                          left: "-10px",
+                          transform: "translateY(-50%)",
+                        }}
+                      >
+                        <LeftOutlined />
+                      </div>
+                    </div>
+                  </div>
                 </div>
               </div>
             ) : meterValue === 425 && start != 0 ? (
               <div
                 style={{
                   width: "2px",
-                  height: "500px",
+                  height: "30vh",
                   backgroundColor: "#CCCCCC",
                   margin: "0 auto",
                 }}
@@ -91,12 +117,33 @@ const RulerComponent = () => {
                 <div
                   style={{
                     position: "absolute",
-                    bottom: "520px",
+                    bottom: "calc(30vh + 20px)",
                     width: "max-content",
-                    color:'#FFFFFF'
+                    color: "#FFFFFF",
                   }}
                 >
                   Tân Vũ Port
+                  <div
+                    style={{
+                      position: "absolute",
+                      width: "200px",
+                      top: "15px",
+                    }}
+                  >
+                    <div style={{ position: "relative" }}>
+                      <hr />
+                      <div
+                        style={{
+                          position: "absolute",
+                          top: "50%",
+                          right: "-10px",
+                          transform: "translateY(-50%)",
+                        }}
+                      >
+                        <RightOutlined />
+                      </div>
+                    </div>
+                  </div>
                 </div>
               </div>
             ) : (
@@ -114,7 +161,7 @@ const RulerComponent = () => {
                 fontSize: "12px",
                 marginTop: "2px",
                 minWidth: "max-content",
-                color:'#FFFFFF'
+                color: "#FFFFFF",
               }}
             >
               {meterValue}
@@ -126,10 +173,10 @@ const RulerComponent = () => {
             style={{
               position: "absolute",
               left: leftPosition,
-              bottom: "178px",
+              bottom: "10vh",
               transform: "translateX(-50%)",
               textAlign: "center",
-              zIndex:50
+              zIndex: 50,
             }}
           >
             <div
@@ -186,12 +233,10 @@ const RulerComponent = () => {
   );
   useEffect(() => {
     const handleShipData = (data: any) => {
-      console.log(data);
-      
       setShips(data);
     };
-  
-    if (socket.connected) {      
+
+    if (socket.connected) {
       // Nếu đã kết nối, gán listener ngay
       socket.on("shipData", handleShipData);
       socket.emit("requestShipData"); // Chủ động yêu cầu dữ liệu
@@ -202,7 +247,7 @@ const RulerComponent = () => {
         socket.emit("requestShipData");
       });
     }
-  
+
     return () => {
       socket.off("shipData", handleShipData);
     };
@@ -239,12 +284,12 @@ const RulerComponent = () => {
         <div
           style={{
             position: "absolute",
-            bottom: "178px",
+            bottom: "10vh",
             left: margin,
             width: effectiveRulerWidthPixels,
             height: "2px",
             backgroundColor: "#FFA500",
-            zIndex:50
+            zIndex: 50,
           }}
         ></div>
         {tickMarks}

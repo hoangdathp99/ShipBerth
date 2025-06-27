@@ -27,6 +27,7 @@
   0% {
     transform: translateY(0);
   }
+
   50% {
     transform: translateY(-20px);
   }
@@ -88,6 +89,24 @@
   }
 }
 
+.endPoint {
+  position: absolute;
+  height: 120px;
+  width: 0px;
+  border-right: 2px dashed #FFD700;
+  display: none;
+  bottom: -90px;
+  left: 100%;
+
+  label {
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    color: #FFD700
+  }
+}
+
 .ship:hover {
   .popup {
     display: block;
@@ -103,6 +122,11 @@
   display: block;
 }
 
+.ship:hover .endPoint {
+
+  display: block;
+}
+
 .ship-position-container {
   position: absolute;
 
@@ -113,7 +137,7 @@
 
   &.not-overlay {
     left: 20px;
-    bottom: 210px;
+    bottom: calc(10vh + 50px);
   }
 }
 
