@@ -5,6 +5,7 @@ import "../styles/ship.scss";
 import { Button } from "antd";
 import { DeleteOutlined } from "@ant-design/icons";
 import { socket } from "@/lib/socketClient";
+import ShipImageWithFallback from "./control/ShipImageWithFallback";
 
 interface ShipPositionComponentProps {
   viewMode?: boolean;
@@ -60,7 +61,7 @@ const ShipPositionComponent: React.FC<ShipPositionComponentProps> = ({
         <div className="startPoint" style={viewMode ? { display: "block" } : {}}>
           <label>{overlay ? "" : `${Math.round(ship.position.x)}m`}</label>
         </div>
-        <img
+        {/* <img
           src={`${ship.image}?t=${cacheBuster}`}
           onError={(e) => {
             (e.target as HTMLImageElement).src = "/uploads/shipContainer.png";
@@ -71,6 +72,16 @@ const ShipPositionComponent: React.FC<ShipPositionComponentProps> = ({
             // backdropFilter: "blur(5px)",
           }}
           alt="Ship"
+        /> */}
+        <ShipImageWithFallback
+          src={`${ship.image}?t=${cacheBuster}`}
+          alt={ship.shipName}
+          style={{
+            width: `${shipWidth}px`,
+            height: "auto",
+            // backdropFilter: "blur(5px)",
+          }}
+          placeholderText="No Image"
         />
         <div className="endPoint" style={viewMode ? { display: "block" } : {}}>
           <label>{overlay ? "" : `${Math.round(ship.position.x)+ship.length}m`}</label>

@@ -13,8 +13,10 @@ import {
   TimePickerProps,
 } from "antd";
 import { useRouter } from "next/navigation";
-import { useState } from "react";
+import { useState } from "react"; // Re-add useState import
 import "../../styles/controlPanel.scss";
+import ShipImageWithFallback from "./ShipImageWithFallback"; // Import the new component
+
 export const ControlPanel = () => {
   const [shipId, setShipId] = useState<number | undefined>(undefined);
   const [selectedShip, setSelectedShip] = useState<any>();
@@ -80,19 +82,19 @@ export const ControlPanel = () => {
       dateBerth,
     });
   };
-  const optionRender = (option: any) => (
-    <Space>
-      <img
-        src={option.data.image}
-        onError={(e) => {
-          (e.target as HTMLImageElement).src = "/uploads/shipContainer.png";
-        }}
-        style={{ width: "50px", height: "auto", backdropFilter: "blur(5px)" }}
-        alt="Ship"
-      />
-      {option.data.label}
-    </Space>
-  );
+  const optionRender = (option: any) => {
+    return (
+      <Space>
+        <ShipImageWithFallback
+          src={option.data.image}
+          alt={option.data.label}
+          style={{ width: "50px", height: "auto", backdropFilter: "blur(5px)" }}
+          placeholderText="No Image"
+        />
+        {option.data.label}
+      </Space>
+    );
+  };
   return (
     <div>
       <Space direction="vertical">

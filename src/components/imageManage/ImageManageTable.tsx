@@ -17,6 +17,7 @@ import { useQuery } from "@tanstack/react-query";
 import fetchShips from "@/services/fetchShip";
 import Dragger from "antd/es/upload/Dragger";
 import { socket } from "@/lib/socketClient";
+import ShipImageWithFallback from "../control/ShipImageWithFallback";
 
 interface DataType {
   shipName: string;
@@ -205,8 +206,7 @@ const ImageManageTable: React.FC = () => {
       key: "image",
       width: 100,
       render: (text) => (
-        <img src={text} style={{ width: "100%", height: "auto" }} alt="" />
-        // <div>abc</div>
+        <ShipImageWithFallback src={text} alt="Ship" style={{ width: "100%", height: "auto" }} />
       ),
     },
     {
