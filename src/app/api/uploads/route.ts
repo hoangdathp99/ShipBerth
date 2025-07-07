@@ -33,6 +33,7 @@ export async function POST(request: Request) {
   const buffer = Buffer.from(bytes);
 
   const filename = `${fileName?.replace(/\s/g, "_")}.png`;
+  
   const filepath = path.join(process.cwd(), 'uploads', filename);
 
   await writeFile(filepath, buffer);
