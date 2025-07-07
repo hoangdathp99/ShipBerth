@@ -20,7 +20,7 @@ export async function POST(request: Request) {
   const formData = await request.formData();
   const file: File | null = formData.get('file') as unknown as File;
   const fileName = formData.get('fileName')?.toString();
-  console.log(file);
+  console.log(file, fileName);
   
   if (!file) {
     return NextResponse.json({ error: 'No file received' }, { status: 400 });
@@ -32,7 +32,7 @@ export async function POST(request: Request) {
   const bytes = await file.arrayBuffer();
   const buffer = Buffer.from(bytes);
 
-  const filename = `${fileName?.replace(' ', '_')}.png`;
+  const filename = `${fileName?.replace(/\s/g, "_")}.png`;
   const filepath = path.join(process.cwd(), 'uploads', filename);
 
   await writeFile(filepath, buffer);

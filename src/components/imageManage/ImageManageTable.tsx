@@ -44,7 +44,7 @@ const ImageManageTable: React.FC = () => {
         shipName: item.ShipName,
         nLoa: item.nLoa,
         image: `/uploads/${item.ShipName.replace(
-          " ",
+          /\s/g,
           "_"
         )}.png?t=${cacheBuster}`,
         id: item.ShipID,
@@ -205,9 +205,14 @@ const ImageManageTable: React.FC = () => {
       dataIndex: "image",
       key: "image",
       width: 100,
-      render: (text) => (
-        <ShipImageWithFallback src={text} alt="Ship" style={{ width: "100%", height: "auto" }} />
-      ),
+      render: (text) => {
+        return (
+        <ShipImageWithFallback
+          src={text}
+          alt="Ship"
+          style={{ width: "100%", height: "auto" }}
+        />
+      )},
     },
     {
       title: "Tên tàu",
@@ -277,7 +282,7 @@ const ImageManageTable: React.FC = () => {
         bordered
         columns={columns}
         dataSource={shipData}
-        scroll={{ y: 130 * 5, x: 'max-content' }}
+        scroll={{ y: 130 * 5, x: "max-content" }}
         rowKey={"id"}
       />
     </div>

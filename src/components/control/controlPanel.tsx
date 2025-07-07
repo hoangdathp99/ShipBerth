@@ -31,7 +31,7 @@ export const ControlPanel = () => {
         value: item.ShipID,
         label: item.ShipName,
         nLoa: item.nLoa,
-        image: `/uploads/${item.ShipName.replace(" ", "_")}.png`,
+        image: `/uploads/${item.ShipName.replace(/\s/g, "_")}.png`,
       }));
     },
   });
